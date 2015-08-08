@@ -9,5 +9,9 @@ app.config.from_object(config_path)
 import api
 #import views
 
-from database import Base, engine
-Base.metadata.create_all(engine)
+#from database import Base, engine
+#Base.metadata.create_all(engine)
+
+print(app.config["DATABASE_URI"])
+
+

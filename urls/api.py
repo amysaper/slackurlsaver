@@ -7,6 +7,7 @@ app = Flask(__name__)
 @app.route("/save_url", methods=["POST"])
 def say_hi():
     print "URL Saved! Type /urls to retreive the list of all saved URLS."
+    print (app.config["DATABASE_URI"])
     return "Woo hoo! URL saved!"
 
     
