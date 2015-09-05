@@ -18,9 +18,9 @@ def save_url():
         url = URL(user=request.form["user_name"], url=text)    
         session.add(url)
         session.commit()
-        return "URL saved! Type /urls to retrieve a list of all saved URLs."
+        return "URL saved! Type /url to retrieve a list of all saved URLs."
     
-    return ", ".join(session.query(URL.url))
+    return ", ".join(row[0] for row in session.query(URL.url))
      
         
 
