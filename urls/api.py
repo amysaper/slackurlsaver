@@ -12,12 +12,18 @@ from flask import request
 @app.route("/save_url", methods=["POST"])
 
 def save_url():
-    return repr(request.form) 
-    #session.add(url)
-    session.commit()
+    text = request.form["text"]
     
+    if text.startswith(("http://","https://","www")):
+        url = URL(user=request.form["user_name"], url=text)    
+        session.add(url)
+        session.commit()
+        return "URL saved! Type /urls to retrieve a list of all saved URLs."
     
-    #return "URL saved! Type /urls to retrieve a list of all saved URLs."
+    return ", ".join(session.query(URL.url))
+     
+        
+
     
 
 #def say_hi():
