@@ -12,7 +12,7 @@ from flask import request
 @app.route("/save_url", methods=["POST"])
 
 def save_url():
-    return repr(request.data) 
+    return repr(request.form) 
     #session.add(url)
     session.commit()
     
